@@ -19,6 +19,17 @@ router.post('/items', function(req, res, next) {
   res.json(list.items);
 });
 
+router.put('/items/:id', function(req, res, next) {
+  var newName = req.params.name, item;
+  console.log(req.params.name);
+  for (item in list) {
+    if (item.name !== newName) {
+      item.name = newName;
+      console.log(item.name);
+    }
+  }
+  res.json(list.items);
+});
 
 
 module.exports = router;
