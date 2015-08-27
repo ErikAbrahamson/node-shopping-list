@@ -1,16 +1,22 @@
 var express = require('express');
 var router = express.Router();
+var lib = require('../models/library');
+var list = new lib.ItemLibrary();
+
+list.addItem('Carrots', 5);
 
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
 router.get('/items', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.json(list.items);
 });
 
 router.post('/items', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  list.addItem(req.body.name, req.body.price);
+  console.log(req.body);
+  res.json(list.items);
 });
 
 
