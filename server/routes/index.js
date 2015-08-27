@@ -20,11 +20,11 @@ router.post('/items', function(req, res, next) {
 });
 
 router.get('/items/:id', function(req, res, next) {
-  var currentID = list.items.filter(function(item) {
-    return item.id === +req.params.id;
+  var currentItemByID = list.items.filter(function(item) {
+    return item.id === req.params.id;
   });
-  console.log(currentID);
-  res.json(currentID);
+  console.log(currentItemByID);
+  res.json(currentItemByID);
 });
 
 router.put('/items/:id', function(req, res, next) {

@@ -7,7 +7,7 @@ ItemLibrary.prototype.addItem = function(name, price) {
   var newItem = {
     name: name,
     id: this.id,
-    price: price
+    price: +price
   };
   this.items.push(newItem);
   this.id += 1;
