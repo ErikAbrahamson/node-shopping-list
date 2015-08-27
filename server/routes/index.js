@@ -4,6 +4,7 @@ var lib = require('../models/library');
 var list = new lib.ItemLibrary();
 
 list.addItem('Carrots', 5);
+list.addItem('Milk', 3);
 
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
@@ -33,7 +34,7 @@ router.delete('/items', function(req, res, next) {
 });
 
 router.put('/items/:id', function(req, res, next) {
-  list.items[req.params.id].name = req.params.name;
+  list.items[req.params.id].name = req.body.name;
   res.json(list.items);
 });
 
