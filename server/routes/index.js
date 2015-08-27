@@ -21,21 +21,19 @@ router.post('/items', function(req, res, next) {
 
 router.get('/items/:id', function(req, res, next) {
   var currentItemByID = list.items.filter(function(item) {
-    return item.id === req.params.id;
+    return item.id === +req.params.id;
   });
   console.log(currentItemByID);
   res.json(currentItemByID);
 });
 
+router.delete('/items', function(req, res, next) {
+  list.items.splice([req.params.id - 1], 1);
+  res.json(list.items);
+});
+
 router.put('/items/:id', function(req, res, next) {
-  var newName = req.params.name, item;
-  console.log(req.params.name);
-  for (item in list) {
-    if (item.name !== newName) {
-      item.name = newName;
-      console.log(item.name);
-    }
-  }
+  list.items[req.params.id].name = req.params.name;
   res.json(list.items);
 });
 
