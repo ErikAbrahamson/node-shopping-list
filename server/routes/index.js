@@ -19,6 +19,14 @@ router.post('/items', function(req, res, next) {
   res.json(list.items);
 });
 
+router.get('/items/:id', function(req, res, next) {
+  var currentID = list.items.filter(function(item) {
+    return item.id === +req.params.id;
+  });
+  console.log(currentID);
+  res.json(currentID);
+});
+
 router.put('/items/:id', function(req, res, next) {
   var newName = req.params.name, item;
   console.log(req.params.name);
